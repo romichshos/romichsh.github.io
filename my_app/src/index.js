@@ -1,27 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AnalogDisplay from '../src/analog-display.js';
 
+class Clock extends React.Component {
+    constructor(props)
+    {   super(props)
+        this.launchClock()// start Clock updating
+        this.state={currentTime: (new Date().toLocaleString())}
+    }
+    launchClock(){
+        setInterval(()=>{
+            console.log('Updateing time...')
+            this.setState({currentTime: (new Date().toLocaleString())})
+        }, 1000)
+    }
+    render() {
+        console.log('Rendering Clock...')
+        return <div><AnalogDisplay time={this.state.currentTime}/></div>
+    }
+}
 
- let helloWord = <h1>Hello word</h1>;
- class HelloWord extends React.Component{
-  render(){
-   //console.log(Object.isFrozen(this.props));
-   //  if (this.props.heading)  return React.createElement('h1', null, 'Hello') else return React.createElement('p', null, 'Hello')
-   return (
-          <div>
-              {helloWord}
-              {helloWord}
-          </div>
-         )
-  }
- }
-/////////////////
- class DateTime extends React.Component{
-     render(){
-         let dateTimeNow = new Date().toLocaleString()
-         return <span>Current date and time {dateTimeNow}</span>
-     }
- }
-ReactDOM.render(<HelloWord/>
-              , document.getElementById('content'));
-
+ReactDOM.render(
+    <Clock />,
+    document.getElementById('content')
+)
