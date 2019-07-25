@@ -1,26 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AnalogDisplay from '../src/analog-display.js';
+import Logger from './logger.js';
 
-class Clock extends React.Component {
+class Content extends React.Component {
     constructor(props)
     {   super(props)
         this.launchClock()// start Clock updating
-        this.state={currentTime: (new Date().toLocaleString())}
+        this.state={counter: 0,
+        currentTime: (new Date().toLocaleString())}
     }
     launchClock(){
         setInterval(()=>{
-            console.log('Updateing time...')
-            this.setState({currentTime: (new Date().toLocaleString())})
+            this.setState( {
+                            counter:++this.state.counter,
+                            currentTime: (new Date().toLocaleString())
+                           }
+                         )
         }, 1000)
     }
+
+    componentDidMount(){
+        console.log(ReactDOM.findDOMNode(this));
+    }
+
+    componentWillMount(){
+        console.log(ReactDOM.findDOMNode(this));
+    }
+
     render() {
-        console.log('Rendering Clock...')
-        return <div><AnalogDisplay time={this.state.currentTime}/></div>
+       if (this.state.counter > 2) return <div/>
+
+        return (<Logger  time="{this.state.currentTime}"></Logger>
+
+        )//<div><AnalogDisplay time={this.state.currentTime}/></div>
     }
 }
 
+
+
 ReactDOM.render(
-    <Clock />,
+    <Content />,
     document.getElementById('content')
 )
