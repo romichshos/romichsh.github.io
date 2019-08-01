@@ -1,44 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Logger from './logger.js';
+import Users from './user';
+import Note from './note';
+import b from './css/bootstrap.css'
 
-class Content extends React.Component {
-    constructor(props)
-    {   super(props)
-        this.launchClock()// start Clock updating
-        this.state={counter: 0,
-        currentTime: (new Date().toLocaleString())}
+
+//let dataUrl = 'http://jsonplaceholder.typicode.com/users';
+//'/src/real-user-data.json';
+
+let secondLeft =5;
+let interval = setInterval(()=>{
+ if (secondLeft===0) {
+     ReactDOM.render(
+         <div>
+            Note was remove after {secondLeft} seconds
+         </div>,
+         document.getElementById('content')
+     )
+   clearInterval()
+  }
+ else {
+     ReactDOM.render(
+         <div>
+             <Note secondLeft={secondLeft} seconds/>
+         </div>,
+         document.getElementById('content')
+     )
     }
-    launchClock(){
-        setInterval(()=>{
-            this.setState( {
-                            counter:++this.state.counter,
-                            currentTime: (new Date().toLocaleString())
-                           }
-                         )
-        }, 1000)
-    }
+ if (secondLeft>=1) secondLeft--;
+ }, 1000
+)
 
-    componentDidMount(){
-        console.log(ReactDOM.findDOMNode(this));
-    }
-
-    componentWillMount(){
-        console.log(ReactDOM.findDOMNode(this));
-    }
-
-    render() {
-       if (this.state.counter > 2) return <div/>
-
-        return (<Logger  time="{this.state.currentTime}"></Logger>
-
-        )//<div><AnalogDisplay time={this.state.currentTime}/></div>
-    }
-}
 
 
 
 ReactDOM.render(
-    <Content />,
+    <div>
+
+    </div> ,
     document.getElementById('content')
 )
