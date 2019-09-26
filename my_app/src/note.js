@@ -1,19 +1,20 @@
 import React from "react";
 
 class Note extends React.Component{
-    confirmLeave(e){
-        e.returnValue = 'Do you realywant to close page?';
-
+    confirmLeave(e) {
+        let confirmationMessage = 'Do you really want to close?'
+        e.returnValue = confirmationMessage     // Gecko, Trident, Chrome 34+
+        return confirmationMessage              // Gecko, WebKit, Chrome <34
     }
 
     componentDidMount(){
         console.log('Attaching confirmMessage event listener for beforeunload' );
-        window.addEventListener('beforeunload', this.confirmLeave)
+        window.addEventListener('onbeforeunload', this.confirmLeave)
     }
 
     componentWillUnmount(){
         console.log('Removing confirmMessage event listener for beforeunload' );
-        window.removeEventListener('beforeunload', this.confirmLeave)
+        window.removeEventListener('onbeforeunload', this.confirmLeave)
     }
 
     render() {
