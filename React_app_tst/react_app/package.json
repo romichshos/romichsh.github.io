@@ -3,9 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.2.0",
+    "ajv": "^6.5.4",
+    "ast": "0.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "jslint": "^0.12.0",
+    "moment": "^2.22.2",
+    "npm": "^6.4.1",
+    "react": "^16.5.2",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-redux": "^5.0.7",
+    "react-scripts": "^1.1.1",
+    "redux": "^4.0.0",
+    "webassembly": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",

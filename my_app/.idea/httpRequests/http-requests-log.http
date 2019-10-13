@@ -1,0 +1,30 @@
+DELETE http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+PATCH http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+PUT http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
